@@ -56,16 +56,23 @@ function OnLoad(executionContext) {
 
     formContext = executionContext.getFormContext();
     formContext.ui.setFormNotification("Benvenuto", "INFO", "FormNot1");
+    var formType = formContext.ui.getFormType();
+    if (formType === CrmFormType.update) {
 
-    var cilindrata = formContext.getAttribute("fumag_cilindrata").getValue();
-    //var uniqueId = "notificaNumeroCilindrata";
-    if (cilindrata == null) {
-        var message = "Devi inserire il numero della Cilindrata.";
-        formContext.getControl("fumag_cilindrata").setNotification(message, "notificaNumeroCilindrata");
-    }
-    else {
-        formContext.getControl("fumag_cilindrata").clearNotification("notificaNumeroCilindrata");
-        formContext.ui.clearFormNotification("FormNot1");
+        var cilindrata = formContext.getAttribute("fumag_cilindrata").getValue();
+        //var uniqueId = "notificaNumeroCilindrata";
+        if (cilindrata == null) {
+            var message = "Devi inserire il numero della Cilindrata.";
+            formContext.getControl("fumag_cilindrata").setNotification(message, "notificaNumeroCilindrata");
+        }
+        else {
+            formContext.getControl("fumag_cilindrata").clearNotification("notificaNumeroCilindrata");
+            formContext.ui.clearFormNotification("FormNot1");
+
+        }
+
+        //? gestisce la visibilità del campo in questione
+        formContext.getControl("fumag_isfunzionante").setVisible(false);
     }
 }
 
@@ -88,9 +95,12 @@ function LookOwner(executionContext) {
             alert(`nome: ${ownerNomeAuto} ID: ${id} entità: ${entT}`);
         }
 
+
     }
 
 }
+
+
 
 
 //#endregion
