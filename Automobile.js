@@ -73,9 +73,11 @@ function OnLoad(executionContext) {
 
         //? gestisce la visibilità del campo in questione
         formContext.getControl("fumag_isfunzionante").setVisible(false);
-    }
-}
 
+
+    }
+
+}
 
 function LookOwner(executionContext) {
 
@@ -95,10 +97,14 @@ function LookOwner(executionContext) {
             alert(`nome: ${ownerNomeAuto} ID: ${id} entità: ${entT}`);
         }
 
-
+        //? gestisce requiredLevel di un determinato attributo
+        //? https://learn.microsoft.com/en-us/power-apps/developer/model-driven-apps/clientapi/reference/attributes/setrequiredlevel
+        formContext.getAttribute("fumag_alimentazione").setRequiredLevel("required");
     }
 
 }
+
+
 
 
 
