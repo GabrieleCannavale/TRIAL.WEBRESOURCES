@@ -51,6 +51,22 @@ function CambioNome() {
     alert("Stai cambiando il nome al veicolo!");
 }
 
+
+//!regola da onchange modello
+function OnChangeModello() {
+    debugger;
+    var modello = formContext.getAttribute("fumag_modello").getText();
+    
+    if (modello === "SUV") {
+       
+        //? gestisce requiredLevel di un determinato attributo
+        //? https://learn.microsoft.com/en-us/power-apps/developer/model-driven-apps/clientapi/reference/attributes/setrequiredlevel
+        formContext.getAttribute("fumag_prezzo").setRequiredLevel("required");
+    } else {
+        formContext.getAttribute("fumag_prezzo").setRequiredLevel("none");
+    }
+}
+
 //!onLoad
 function OnLoad(executionContext) {
 
@@ -100,6 +116,8 @@ function LookOwner(executionContext) {
         //? gestisce requiredLevel di un determinato attributo
         //? https://learn.microsoft.com/en-us/power-apps/developer/model-driven-apps/clientapi/reference/attributes/setrequiredlevel
         formContext.getAttribute("fumag_alimentazione").setRequiredLevel("required");
+    
+        formContext.getAttribute("fumag_modello").addOnChange(OnChangeModello);
     }
 
 }
