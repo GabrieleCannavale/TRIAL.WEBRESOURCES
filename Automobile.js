@@ -22,7 +22,7 @@ var CrmSaveMode = {
 //#region FUNZIONI DI TEST (Semplici Alert su alcune azioni)
 
 //!onSave
-function DisplayAlert(executionContext) {
+function OnSave(executionContext) {
     debugger;
     var formContext = executionContext.getFormContext();
 
